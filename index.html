@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Josseph Valverde — Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+  <nav class="sidebar">
+    <a class="nav-logo" href="#about">josseph<span>.dev</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+
+    <!-- About me -->
+    <section id="about">
+      <div class="container">
+        <div class="hero">
+          <div class="hero-text">
+            <div class="hero-greeting">// hello world</div>
+            <h1 class="hero-name">Josseph<br>Valverde</h1>
+            <div class="hero-role">Full-Stack Developer</div>
+            <p class="hero-bio">
+              Computer Engineering graduate from TEC. I design and build complete software systems — web apps, backend services, REST APIs, and cloud integrations.
+            </p>
+            <div class="hero-actions">
+              <a href="./assets/cv/CV_Josseph_Valverde_Robles.pdf" class="btn btn-primary" download>Download CV</a> 
+            </div>
+          </div>
+          <div class="hero-photo">
+            <img src="./assets/images/profile.png" alt="Josseph Valverde" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-eyebrow">// what I work with</div>
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">01 / frontend</div>
+            <div class="skill-name">Frontend</div>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Angular</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Tailwind</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">02 / backend</div>
+            <div class="skill-name">Backend</div>
+            <div class="tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">Express</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Python</span>
+              <span class="tag">Java</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">03 / data</div>
+            <div class="skill-name">Databases</div>
+            <div class="tags">
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Firestore</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">04 / tools</div>
+            <div class="skill-name">Tools & Cloud</div>
+            <div class="tags">
+              <span class="tag">Docker</span>
+              <span class="tag">AWS S3</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Git</span>
+              <span class="tag">Postman</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-eyebrow">// where I've worked</div>
+        <h2 class="section-title">Experience</h2>
+        <div class="exp-item">
+          <div class="exp-date">Aug — Dec 2025</div>
+          <div>
+            <div class="exp-role">Full-Stack Developer</div>
+            <div class="exp-org">ProSTEAM — Instituto Tecnológico de Costa Rica</div>
+            <p class="exp-desc">
+              Continued development of an institutional platform for academic event management, participant registration, and automated certificate generation. Built RESTful APIs with Node.js and Express, integrated with Cloud Firestore, and developed the frontend interface using Angular.
+            </p>
+            <div class="tags">
+              <span class="tag">Angular</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Express</span>
+              <span class="tag">Firestore</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-eyebrow">// what I've built</div>
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+
+          <div class="project-card">
+            <div class="project-header">
+              <div class="project-name">HealthFlow</div>
+              <a href="https://github.com/JossephVR/HealthFlow-Health-Dashboard" target="_blank" class="project-link">↗</a>
+            </div>
+            <p class="project-desc">Personal health dashboard with authentication, CSV data import, and interactive metric visualizations over time.</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">Tailwind</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <div class="project-name">OnStream</div>
+              <a href="https://github.com/JossephVR/Multimedia-streaming-system" target="_blank" class="project-link">↗</a>
+            </div>
+            <p class="project-desc">Multimedia streaming system with real-time WebSocket communication and AWS S3 cloud media integration.</p>
+            <div class="tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">WebSockets</span>
+              <span class="tag">AWS S3</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <div class="project-name">PureHarvest</div>
+              <a href="#contact" class="project-link">↗</a>
+            </div>
+            <p class="project-desc">Native Android marketplace for coffee and organic producers, with Firebase integration, bilingual UI, and map navigation.</p>
+            <div class="tags">
+              <span class="tag">Android</span>
+              <span class="tag">Java</span>
+              <span class="tag">Firebase</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <div class="project-name">fullstack-user-manager</div>
+              <a href="https://github.com/JossephVR/fullstack-user-manager" target="_blank" class="project-link">↗</a>
+            </div>
+            <p class="project-desc">Full-stack CRUD app containerized with Docker Compose — React frontend served by Nginx, Express backend, and PostgreSQL database.</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Docker</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Nginx</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-eyebrow">// get in touch</div>
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-wrap">
+          <p class="contact-intro">
+            I'm currently looking for new opportunities. If you have a project in mind, a question, or just want to connect — feel free to reach out.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:jossephvr@gmail.com" class="contact-link">jossephvr@gmail.com</a>
+            <a href="https://www.linkedin.com/in/josseph-valverde-490b16353/" target="_blank" class="contact-link">LinkedIn</a>
+            <a href="https://github.com/JossephVR" target="_blank" class="contact-link">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        built by josseph valverde · 2026
+      </div>
+    </footer>
+
+  </main>
+
+</body>
+</html>
