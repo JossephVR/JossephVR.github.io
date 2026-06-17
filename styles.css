@@ -155,6 +155,14 @@ body::after {
     inset 0 0 10px rgba(124, 92, 252, 0.08);
 }
 
+.nav-links a.active {
+  color: var(--text-h);
+  background: rgba(124, 92, 252, 0.16);
+  border-color: rgba(124, 92, 252, 0.45);
+  box-shadow:
+    0 0 18px rgba(124, 92, 252, 0.18),
+    inset 0 0 10px rgba(124, 92, 252, 0.08);
+}
 
 .sidebar-contact {
   font-family: var(--mono);
@@ -490,6 +498,8 @@ footer {
   color: var(--text);
 }
 
+
+
 /* Responsive */
 @media (max-width: 768px) {
   body { flex-direction: column; }
@@ -524,6 +534,7 @@ footer {
     gap: 4px;
   }
 
+  
 
   .main-content { margin-left: 0; }
 
