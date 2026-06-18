@@ -498,6 +498,21 @@ footer {
   color: var(--text);
 }
 
+/* Scroll animations */
+.reveal {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.from-left {
+  transform: translateX(-60px);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
 
 
 /* Responsive */

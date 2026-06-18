@@ -14,3 +14,19 @@ const observer = new IntersectionObserver((entries) => {
 })
 
 sections.forEach(section => observer.observe(section))
+
+const revealElements = document.querySelectorAll('.reveal')
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible')
+    } else {
+      entry.target.classList.remove('visible')
+    }
+  })
+}, {
+  threshold: 0.15
+})
+
+revealElements.forEach(el => revealObserver.observe(el))
