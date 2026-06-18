@@ -30,3 +30,19 @@ const revealObserver = new IntersectionObserver((entries) => {
 })
 
 revealElements.forEach(el => revealObserver.observe(el))
+
+const hamburger = document.getElementById('hamburger')
+const navLinksMenu = document.getElementById('nav-links')
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open')
+  navLinksMenu.classList.toggle('open')
+})
+
+// Close menu when a link is clicked
+navLinksMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open')
+    navLinksMenu.classList.remove('open')
+  })
+})
