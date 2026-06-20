@@ -49,8 +49,6 @@ navLinksMenu.querySelectorAll('a').forEach(link => {
 
 // Skills carousel
 const skillsTrack = document.getElementById('skillsTrack')
-const skillsPrev = document.getElementById('skillsPrev')
-const skillsNext = document.getElementById('skillsNext')
 const skillsDots = document.getElementById('skillsDots')
 const skillCards = skillsTrack.querySelectorAll('.skill-card')
 
@@ -68,6 +66,7 @@ function buildDots() {
   for (let i = 0; i < totalPages; i++) {
     const dot = document.createElement('button')
     dot.classList.add('carousel-dot')
+    dot.textContent = i + 1
     dot.setAttribute('aria-label', `Go to skills page ${i + 1}`)
     dot.addEventListener('click', () => goToPage(i))
     skillsDots.appendChild(dot)
@@ -84,26 +83,12 @@ function updateActiveDot() {
   const dots = skillsDots.querySelectorAll('.carousel-dot')
   const currentPage = getCurrentPage()
   dots.forEach((dot, i) => dot.classList.toggle('active', i === currentPage))
-  updateButtonStates(currentPage, dots.length)
-}
-
-function updateButtonStates(currentPage, totalPages) {
-  skillsPrev.disabled = currentPage <= 0
-  skillsNext.disabled = currentPage >= totalPages - 1
 }
 
 function goToPage(pageIndex) {
   const pageWidth = skillsTrack.clientWidth
   skillsTrack.scrollTo({ left: pageWidth * pageIndex, behavior: 'smooth' })
 }
-
-skillsPrev.addEventListener('click', () => {
-  goToPage(getCurrentPage() - 1)
-})
-
-skillsNext.addEventListener('click', () => {
-  goToPage(getCurrentPage() + 1)
-})
 
 let scrollTimeout
 skillsTrack.addEventListener('scroll', () => {

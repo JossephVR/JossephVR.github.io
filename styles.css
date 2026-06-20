@@ -326,14 +326,12 @@ section { padding: 88px 0; }
 
 
 /* Skills */
+/* Skills carousel */
 .skills-carousel {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  width: 100%;
 }
 
 .skills-carousel-track {
-  flex: 1;
   display: flex;
   gap: 24px;
   overflow-x: auto;
@@ -410,88 +408,83 @@ section { padding: 88px 0; }
   font-size: 34px;
 }
 
-/* Carousel nav buttons */
-.carousel-btn {
-  flex-shrink: 0;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  color: var(--text-h);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.15s;
-}
-
-.carousel-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--bg-hover);
-}
-
-.carousel-btn:active {
-  transform: scale(0.94);
-}
-
-.carousel-btn:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-.carousel-btn:disabled:hover {
-  border-color: var(--border);
-  color: var(--text-h);
-  background: var(--bg-card);
-}
-
-/* Dots */
+/* Numbered pagination dots */
 .carousel-dots {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 10px;
+  margin-top: 18px;
 }
 
 .carousel-dot {
-  width: 8px;
-  height: 8px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: var(--border);
-  border: none;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
   cursor: pointer;
-  padding: 0;
-  transition: background 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.15s;
 }
 
 .carousel-dot:hover {
-  background: rgba(124, 92, 252, 0.5);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .carousel-dot.active {
   background: var(--accent);
-  transform: scale(1.25);
+  border-color: var(--accent);
+  color: #fff;
+  transform: scale(1.08);
 }
 
 @media (max-width: 768px) {
+  #skills .container {
+    padding: 0 12px;
+  }
+
+  .skills-carousel-track {
+    gap: 16px;
+    padding: 6px 0 14px;
+  }
+
   .skill-card {
     flex: 0 0 100%;
-    padding: 28px;
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .skill-name {
+    font-size: 17px;
+    margin-bottom: 16px;
   }
 
   .skill-tags {
-    gap: 12px;
+    gap: 8px;
   }
 
   .skill-tag {
-    min-height: 84px;
+    min-height: 72px;
+    padding: 8px 4px;
+    font-size: 10px;
+    gap: 5px;
   }
 
-  .carousel-btn {
-    width: 36px;
-    height: 36px;
+  .skill-tag i {
+    font-size: 24px;
+  }
+
+  .carousel-dot {
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
   }
 }
 
