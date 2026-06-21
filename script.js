@@ -53,9 +53,10 @@ const skillsDots = document.getElementById('skillsDots')
 const skillCards = skillsTrack.querySelectorAll('.skill-card')
 
 function getCardsPerView() {
-  return window.matchMedia('(max-width: 768px)').matches ? 1 : 2
+  if (window.matchMedia('(max-width: 768px)').matches) return 1
+  if (window.matchMedia('(max-width: 1024px)').matches) return 2
+  return 3
 }
-
 function getTotalPages() {
   return Math.ceil(skillCards.length / getCardsPerView())
 }

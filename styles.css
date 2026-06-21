@@ -75,35 +75,36 @@ body::after {
   position: fixed;
   left: 0;
   top: 0;
-  width: 220px;
+  width: 130px;
   height: 100vh;
 
   border-right: none;
 
-  padding: 40px 28px;
+  padding: 36px 14px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 32px;
 
   background: transparent;
-
   backdrop-filter: none;
 
   z-index: 100;
 }
 
 .nav-logo {
-  padding: 10px 14px;
+  padding: 8px 10px;
   border-radius: 999px;
   background: rgba(124,92,252,.08);
   border: 1px solid rgba(124,92,252,.18);
   display: inline-block;
   transition: all .3s ease;
   font-family: var(--mono);
-  font-size: 14px;
+  font-size: 11px;
   color: var(--accent-2);
   text-decoration: none;
+  text-align: center;
 }
+
 
 .nav-logo:hover {
   background: rgba(124,92,252,.16);
@@ -124,13 +125,14 @@ body::after {
 .nav-links a {
   display: block;
 
-  padding: 10px 16px;
-  margin-bottom: 8px;
+  padding: 9px 8px;
+  margin-bottom: 6px;
 
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 500;
   font-family: var(--sans);
   text-decoration: none;
+  text-align: center;
 
   color: var(--text);
 
@@ -152,7 +154,7 @@ body::after {
   background: rgba(124, 92, 252, 0.16);
   border-color: rgba(124, 92, 252, 0.45);
 
-  transform: translateX(6px);
+  transform: translateX(3px);
 
   box-shadow:
     0 0 18px rgba(124, 92, 252, 0.18),
@@ -184,7 +186,7 @@ body::after {
 
 /* Main content */
 .main-content {
-  margin-left: 220px;
+  margin-left: 130px;
   flex: 1;
   min-width: 0;
   overflow-x: hidden;
@@ -192,9 +194,9 @@ body::after {
 
 /* Layout */
 .container {
-  max-width: 800px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 36px;
 }
 
 section { padding: 88px 0; }
@@ -326,7 +328,6 @@ section { padding: 88px 0; }
 
 
 /* Skills */
-/* Skills carousel */
 .skills-carousel {
   width: 100%;
 }
@@ -347,7 +348,7 @@ section { padding: 88px 0; }
 }
 
 .skill-card {
-  flex: 0 0 calc(50% - 12px);
+  flex: 0 0 calc((100% - 48px) / 3);
   scroll-snap-align: start;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -359,6 +360,12 @@ section { padding: 88px 0; }
 .skill-card:hover {
   border-color: var(--accent);
   background: var(--bg-hover);
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .skill-card {
+    flex: 0 0 calc(50% - 12px); /* 2 visible on tablet */
+  }
 }
 
 .skill-icon {
