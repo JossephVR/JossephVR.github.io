@@ -104,3 +104,51 @@ window.addEventListener('resize', () => {
 })
 
 buildDots()
+
+// Projects carousel
+const projectsTrack = document.getElementById('projectsTrack')
+const projectsDots = document.getElementById('projectsDots')
+const projectCards = projectsTrack.querySelectorAll('.project-card')
+
+function buildProjectDots() {
+  projectsDots.innerHTML = ''
+  projectCards.forEach((_, i) => {
+    const dot = document.createElement('button')
+    dot.classList.add('carousel-dot')
+    dot.textContent = i + 1
+    dot.setAttribute('aria-label', `Go to project ${i + 1}`)
+    dot.addEventListener('click', () => goToProjectPage(i))
+    projectsDots.appendChild(dot)
+  })
+  updateActiveProjectDot()
+}
+
+function getCurrentProjectPage() {
+  const pageWidth = projectsTrack.clientWidth
+  return Math.round(projectsTrack.scrollLeft / pageWidth)
+}
+
+function updateActiveProjectDot() {
+  const dots = projectsDots.querySelectorAll('.carousel-dot')
+  const currentPage = getCurrentProjectPage()
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === currentPage))
+}
+
+function goToProjectPage(pageIndex) {
+  const pageWidth = projectsTrack.clientWidth
+  projectsTrack.scrollTo({ left: pageWidth * pageIndex, behavior: 'smooth' })
+}
+
+let projectScrollTimeout
+projectsTrack.addEventListener('scroll', () => {
+  clearTimeout(projectScrollTimeout)
+  projectScrollTimeout = setTimeout(updateActiveProjectDot, 80)
+})
+
+let projectResizeTimeout
+window.addEventListener('resize', () => {
+  clearTimeout(projectResizeTimeout)
+  projectResizeTimeout = setTimeout(buildProjectDots, 150)
+})
+
+buildProjectDots()
