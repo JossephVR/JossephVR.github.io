@@ -769,8 +769,9 @@ footer {
   .hero-name { font-size: 34px; }
 
   .sidebar {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     height: auto;
     flex-direction: column;
@@ -781,9 +782,7 @@ footer {
     backdrop-filter: blur(12px);
   }
 
-  .sidebar-top {
-    display: contents;
-  }
+ 
 
   .hamburger { display: flex; }
 
@@ -806,7 +805,10 @@ footer {
     margin-bottom: 0;
   }
 
-  .main-content { margin-left: 0; }
+  .main-content {
+    margin-left: 0;
+    padding-top: 56px;
+  }
 
   .hero-photo { width: 120px; height: 120px; }
   .exp-item { grid-template-columns: 1fr; gap: 4px; }
