@@ -697,35 +697,119 @@ section { padding: 88px 0; }
 }
 
 /* Contact */
-.contact-wrap { max-width: 520px; }
+.contact-wrap {
+  display: flex;
+  justify-content: center;
+}
 
-.contact-intro {
+.contact-box {
+  width: 100%;
+  max-width: 1100px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 48px 44px;
+}
+
+
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  text-align: left;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.contact-card:hover {
+  border-color: var(--accent);
+  background: rgba(124, 92, 252, 0.08);
+  box-shadow: 0 0 20px rgba(124, 92, 252, 0.1);
+  transform: translateY(-2px);
+}
+
+.contact-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--accent-lt);
+  border: 1px solid rgba(124, 92, 252, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  transition: background 0.2s;
+}
+
+.contact-card:hover .contact-icon {
+  background: rgba(124, 92, 252, 0.2);
+}
+
+.contact-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-icon i {
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.contact-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-card-label {
+  font-size: 10px;
+  font-family: var(--mono);
+  color: var(--text);
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.contact-card-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-h);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-card-arrow {
   font-size: 15px;
   color: var(--text);
-  margin-bottom: 32px;
-  line-height: 1.8;
+  transition: color 0.2s, transform 0.2s;
+  flex-shrink: 0;
 }
 
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.contact-link {
-  font-size: 13px;
-  font-family: var(--mono);
-  color: var(--text-h);
-  border: 1px solid var(--border);
-  padding: 10px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.contact-link:hover {
-  border-color: var(--accent);
+.contact-card:hover .contact-card-arrow {
   color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 768px) {
+  .contact-box {
+    padding: 32px 24px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Footer */
