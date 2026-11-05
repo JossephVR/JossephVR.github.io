@@ -471,6 +471,30 @@ section { padding: 88px 0; }
   gap: 20px;
 }
 
+/* Experience carousel */
+.experience-carousel {
+  width: 100%;
+}
+
+.experience-carousel-track {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.experience-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.experience-carousel-track .timeline-card {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
 .timeline-card {
   background: var(--bg-card);
   border: 1px solid var(--border);

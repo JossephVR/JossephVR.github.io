@@ -152,3 +152,46 @@ window.addEventListener('resize', () => {
 })
 
 buildProjectDots()
+
+// Experience carousel
+const experienceTrack = document.getElementById('experienceTrack')
+const experienceDots = document.getElementById('experienceDots')
+const experienceCards = experienceTrack.querySelectorAll('.timeline-card')
+
+function buildExperienceDots() {
+  experienceDots.innerHTML = ''
+  experienceCards.forEach((_, i) => {
+    const dot = document.createElement('button')
+    dot.classList.add('carousel-dot')
+    dot.textContent = i + 1
+    dot.setAttribute('aria-label', `Go to experience ${i + 1}`)
+    dot.addEventListener('click', () => goToExperiencePage(i))
+    experienceDots.appendChild(dot)
+  })
+  updateActiveExperienceDot()
+}
+
+function getCurrentExperiencePage() {
+  return Math.round(experienceTrack.scrollLeft / experienceTrack.clientWidth)
+}
+
+function updateActiveExperienceDot() {
+  const dots = experienceDots.querySelectorAll('.carousel-dot')
+  const currentPage = getCurrentExperiencePage()
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === currentPage))
+}
+
+function goToExperiencePage(pageIndex) {
+  experienceTrack.scrollTo({
+    left: experienceTrack.clientWidth * pageIndex,
+    behavior: 'smooth'
+  })
+}
+
+let experienceScrollTimeout
+experienceTrack.addEventListener('scroll', () => {
+  clearTimeout(experienceScrollTimeout)
+  experienceScrollTimeout = setTimeout(updateActiveExperienceDot, 80)
+})
+
+buildExperienceDots()
