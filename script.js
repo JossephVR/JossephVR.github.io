@@ -120,6 +120,20 @@ function buildProjectDots() {
     dot.addEventListener('click', () => goToProjectPage(i))
     projectsDots.appendChild(dot)
   })
+
+  const addBtn = document.createElement('button')
+  addBtn.classList.add('carousel-dot', 'carousel-dot-add')
+  addBtn.textContent = '+'
+  addBtn.title = 'Want to add another project? Contact me!'
+  addBtn.setAttribute('aria-label', 'Want to add another project? Go to contact section')
+  addBtn.addEventListener('click', () => {
+    const contactSection = document.getElementById('contact')
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  })
+  projectsDots.appendChild(addBtn)
+
   updateActiveProjectDot()
 }
 

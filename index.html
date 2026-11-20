@@ -81,8 +81,9 @@
               <div class="skill-card">               
                 <div class="skill-name">Backend</div>
                 <div class="skill-tags">
+                  <div class="skill-tag"><i class="devicon-spring-original colored"></i><span>Spring Boot</span></div>
                   <div class="skill-tag"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
-                  <div class="skill-tag"><i class="devicon-express-original"></i><span>Express</span></div>
+                  <div class="skill-tag"><i class="devicon-express-original"></i><span>express.js</span></div>
                   <div class="skill-tag"><i class="devicon-fastapi-plain colored"></i><span>FastAPI</span></div>
                 </div>
               </div>
@@ -112,6 +113,7 @@
                 <div class="skill-name">Tools & Cloud</div>
                 <div class="skill-tags">
                   <div class="skill-tag"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+                  <div class="skill-tag"><i class="devicon-kubernetes-plain colored"></i><span>Kubernetes</span></div>
                   <div class="skill-tag"><i class="devicon-amazonwebservices-plain-wordmark colored"></i><span>AWS S3</span></div>
                   <div class="skill-tag"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
                   <div class="skill-tag"><i class="devicon-git-plain colored"></i><span>Git</span></div>
@@ -151,38 +153,61 @@
               <div class="timeline-card">
                 <div class="timeline-header">
                   <div>
-                    <div class="exp-role">Full-Stack Developer</div>
-                    <div class="exp-org">ProSTEAM - Instituto Tecnológico de Costa Rica</div>
+                    <div class="exp-role">Software Developer</div>
+                    <div class="exp-org">Freelance</div>
                   </div>
-                  <div class="exp-date">Aug 2025 - Sep 2026</div>
+                  <div class="exp-date">Oct 2025 - Nov 2026</div>
                 </div>
                 <p class="exp-desc">
-                  Continued development of an institutional platform for academic event management, participant registration, and automated certificate generation. Built RESTful APIs with Node.js and Express, integrated with Cloud Firestore, and developed the frontend interface using Angular.
+                  Built a health tracking platform end to end with authentication, CSV data import, historical trend analytics, and a React and Tailwind dashboard backed by a FastAPI and SQLite API layer.
                 </p>
                 <div class="tags">
-                  <span class="tag">Angular</span>
-                  <span class="tag">Node.js</span>
-                  <span class="tag">Express</span>
-                  <span class="tag">Firestore</span>
+                  <span class="tag">React</span>
+                  <span class="tag">FastAPI</span>
+                  <span class="tag">MySQL</span>
+                  <span class="tag">Tailwind</span>
+                  <span class="tag">Docker</span>
+                  <span class="tag">Kubernetes</span>
                 </div>
               </div>
 
               <div class="timeline-card">
                 <div class="timeline-header">
                   <div>
-                    <div class="exp-role">Full-Stack Developer</div>
-                    <div class="exp-org">HealthFlow - Freelance Project</div>
+                    <div class="exp-role">Software Developer</div>
+                    <div class="exp-org">Instituto Tecnológico de Costa Rica</div>
                   </div>
-                  <div class="exp-date">Jul 2024 - Jun 2025</div>
+                  <div class="exp-date">Aug 2025 - Dec 2025</div>
                 </div>
                 <p class="exp-desc">
-                  Designed and built a personal health dashboard end to end. Developed a FastAPI backend with authentication and CSV data import, a SQLite data layer, and a React and Tailwind frontend with interactive charts of health metrics over time.
+                  Developed an institutional platform for event management, registration, and certificate generation using Angular on the frontend and Node.js, express.js, and Cloud Firestore on the backend.
+                </p>
+                <div class="tags">
+                  <span class="tag">Angular</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">express.js</span>
+                  <span class="tag">Firebase(Cloud Firestore)</span>
+                </div>
+              </div>
+
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <div>
+                    <div class="exp-role">Software Developer</div>
+                    <div class="exp-org">Freelance</div>
+                  </div>
+                  <div class="exp-date">Jun 2024 - Jul 2025</div>
+                </div>
+                <p class="exp-desc">
+                  Built a full-stack microbiological lab management app with a React frontend and Java, Spring Boot, and PostgreSQL backend, handling domain calculations, validation, and Docker/Kubernetes deployments.
                 </p>
                 <div class="tags">
                   <span class="tag">React</span>
-                  <span class="tag">FastAPI</span>
-                  <span class="tag">SQLite</span>
-                  <span class="tag">Tailwind</span>
+                  <span class="tag">Java</span>
+                  <span class="tag">Spring Boot</span>
+                  <span class="tag">PostgreSQL</span>
+                  <span class="tag">Docker</span>
+                  <span class="tag">Kubernetes</span>
                 </div>
               </div>
 
@@ -261,29 +286,11 @@
 
               <div class="project-card">
                 <div class="project-image">
-                  <img src="./assets/images/projects/Microbiological-Reports-System.png" alt="Microbiological Reports System project screenshot" />
-                </div>
-                <div class="project-info">
-                  <div class="project-name">Microbiological Reports System</div>
-                  <p class="project-desc">Web app for laboratory data management. Handles microbiological analysis records, CFU calculations, monthly statistics, and organism management.</p>
-                  <div class="tags">
-                    <span class="tag">Node.js</span>
-                    <span class="tag">Express</span>
-                    <span class="tag">PostgreSQL</span>
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                  </div>
-                  <a href="https://github.com/JossephVR/Sistema-de-informes-microbiologicos" target="_blank" class="project-link-btn">view repository </a>
-                </div>
-              </div>
-
-              <div class="project-card">
-                <div class="project-image">
                   <img src="./assets/images/projects/Fullstack-user-manager.png" alt="fullstack-user-manager project screenshot" />
                 </div>
                 <div class="project-info">
                   <div class="project-name">Fullstack-user-manager</div>
-                  <p class="project-desc">Full-stack CRUD app containerized with Docker Compose — React frontend served by Nginx, Express backend, and PostgreSQL database.</p>
+                  <p class="project-desc">Full-stack CRUD app containerized with Docker Compose — React frontend served by Nginx, express.js backend, and PostgreSQL database.</p>
                   <div class="tags">
                     <span class="tag">React</span>
                     <span class="tag">Docker</span>
