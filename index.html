@@ -1,404 +1,388 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Josseph Valverde — Full-Stack Developer</title>
+  <meta name="description" content="Portfolio of Josseph Valverde, Computer Engineering graduate and full-stack developer." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="./assets/images/favicon.png" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-</head>
-<body>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" defer></script></head>
 
-  <nav class="sidebar">
-    <div class="sidebar-top">
-      <a class="nav-logo" href="#about">josseph<span>.dev</span></a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<body class="grain relative overflow-x-hidden bg-bg font-sans text-muted antialiased selection:bg-sage/30 selection:text-ink">
 
-  <main class="main-content">
+  <!-- Ambient background -->
+  <div class="pointer-events-none fixed inset-0 overflow-hidden">
+    <div class="absolute -top-40 -right-32 h-[560px] w-[560px] rounded-full bg-sage/10 blur-[120px] animate-drift"></div>
+    <div class="absolute -bottom-48 -left-32 h-[520px] w-[520px] rounded-full bg-emerald-400/5 blur-[120px] animate-drift-slow"></div>
+  </div>
 
-    <!-- About me -->
-    <section id="about">
-      <div class="container">
-        <div class="hero">
-          <div class="hero-text">
-            <div class="hero-greeting">// hello world</div>
-            <h1 class="hero-name">Josseph<br>Valverde</h1>
-            <div class="hero-role">Software Developer</div>
-            <p class="hero-bio">
-              Computer Engineering graduate from TEC. I design and build complete software systems, web apps, backend services, REST APIs, and cloud integrations.
-            </p>
-            <div class="hero-actions">
-              <a href="./assets/cv/CV_Josseph_Valverde_Robles.pdf" class="btn btn-primary" download>Download CV</a> 
-            </div>
+  <!-- Nav -->
+  <header class="fixed top-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2">
+    <nav class="rounded-2xl border border-line bg-bg/70 px-4 py-2.5 shadow-xl shadow-black/30 backdrop-blur-xl">
+      <div class="flex items-center justify-between">
+        <a href="#about" class="font-mono text-sm text-sage-light">josseph<span class="text-sage">.dev</span></a>
+
+        <ul class="hidden items-center gap-1 md:flex" id="desktop-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <button id="hamburger" aria-label="Toggle menu" class="flex flex-col gap-1.5 p-1 md:hidden">
+          <span class="h-0.5 w-5 rounded bg-ink transition-all duration-300"></span>
+          <span class="h-0.5 w-5 rounded bg-ink transition-all duration-300"></span>
+          <span class="h-0.5 w-5 rounded bg-ink transition-all duration-300"></span>
+        </button>
+      </div>
+
+      <ul id="mobile-links" class="grid max-h-0 grid-cols-2 gap-2 overflow-hidden transition-all duration-300 md:hidden">
+        <li><a href="#about" class="nav-link block text-center">About</a></li>
+        <li><a href="#skills" class="nav-link block text-center">Skills</a></li>
+        <li><a href="#experience" class="nav-link block text-center">Experience</a></li>
+        <li><a href="#education" class="nav-link block text-center">Education</a></li>
+        <li><a href="#projects" class="nav-link block text-center">Projects</a></li>
+        <li><a href="#contact" class="nav-link block text-center">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- About -->
+    <section id="about" class="flex min-h-screen items-center px-6 pt-28 pb-16">
+      <div class="mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-14 lg:flex-row lg:justify-between">
+
+        <div class="max-w-xl text-center lg:text-left" data-reveal>
+          <div class="mb-6 inline-flex items-center gap-2.5 rounded-full border border-sage/30 bg-sage/10 px-3.5 py-1.5 font-mono text-xs text-sage-light">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full rounded-full bg-sage-light animate-ping2"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-sage-light"></span>
+            </span>
+            Open to new opportunities
           </div>
-          <div class="hero-photo">
-            <img src="./assets/images/profile.png" alt="Josseph Valverde" />
+
+          <p class="mb-3 font-mono text-sm text-sage-light">// hello world</p>
+          <h1 class="text-5xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl">
+            Josseph<br />
+            <span class="bg-gradient-to-r from-sage-light via-sage to-emerald-300 bg-clip-text text-transparent">Valverde</span>
+          </h1>
+
+          <div class="mt-5 h-8 font-mono text-lg text-ink sm:text-xl">
+            <span id="typed"></span><span class="ml-0.5 inline-block w-[2px] bg-sage-light align-middle animate-blink">&nbsp;</span>
+          </div>
+
+          <p class="mx-auto mt-5 max-w-lg text-[15px] leading-relaxed lg:mx-0">
+            Computer Engineering graduate from TEC. I design and build complete software systems, web apps, backend services, REST APIs, and cloud integrations.
+          </p>
+
+          <div class="mt-9 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+            <a href="./assets/cv/CV_Josseph_Valverde_Robles.pdf" download
+               class="group inline-flex items-center gap-2 rounded-xl bg-sage px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sage/20 transition duration-300 hover:-translate-y-0.5 hover:bg-sage-light hover:text-bg hover:shadow-sage/40">
+              <i data-lucide="download" class="h-4 w-4 transition group-hover:translate-y-0.5"></i> Download CV
+            </a>
+            <a href="#contact"
+               class="inline-flex items-center gap-2 rounded-xl border border-line bg-card px-6 py-3 text-sm font-semibold text-ink transition duration-300 hover:-translate-y-0.5 hover:border-sage/60">
+              Get in touch <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="relative shrink-0" data-reveal>
+          <div class="absolute -inset-4 rounded-full bg-gradient-to-tr from-sage/30 via-transparent to-emerald-300/20 blur-2xl"></div>
+          <div class="relative h-56 w-56 overflow-hidden rounded-full border-2 border-line ring-4 ring-sage/10 sm:h-72 sm:w-72 lg:h-[340px] lg:w-[340px]">
+            <img src="./assets/images/profile.png" alt="Josseph Valverde" class="h-full w-full object-cover transition duration-700 hover:scale-105" />
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Tech marquee -->
+    <div class="relative overflow-hidden border-y border-line bg-card/40 py-5 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+      <div class="flex w-max animate-marquee gap-12 whitespace-nowrap font-mono text-sm text-muted" id="marquee"></div>
+    </div>
 
     <!-- Skills -->
-    <section id="skills">
-      <div class="container">
-        <div class="reveal from-left">
-          <div class="section-eyebrow">// what I work with</div>
-          <h2 class="section-title">Skills</h2>
+    <section id="skills" class="px-6 py-24">
+      <div class="mx-auto max-w-6xl">
+        <div data-reveal>
+          <p class="mb-2 font-mono text-xs tracking-widest text-sage">// what I work with</p>
+          <h2 class="mb-12 text-3xl font-bold text-ink sm:text-4xl">Skills</h2>
+        </div>
 
-          <div class="skills-carousel">
-            <div class="skills-carousel-track" id="skillsTrack">
-          
-              <div class="skill-card">                
-                <div class="skill-name">Frontend</div>
-                <div class="skill-tags">
-                  <div class="skill-tag"><i class="devicon-react-original colored"></i><span>React</span></div>
-                  <div class="skill-tag"><i class="devicon-angularjs-plain colored"></i><span>Angular</span></div>
-                  <div class="skill-tag"><i class="devicon-tailwindcss-original colored"></i><span>Tailwind</span></div>
-                  <div class="skill-tag"><i class="devicon-html5-plain colored"></i><span>HTML</span></div>
-                  <div class="skill-tag"><i class="devicon-css3-plain colored"></i><span>CSS</span></div>
-                  
-                </div>
-              </div>
-          
-              <div class="skill-card">               
-                <div class="skill-name">Backend</div>
-                <div class="skill-tags">
-                  <div class="skill-tag"><i class="devicon-spring-original colored"></i><span>Spring Boot</span></div>
-                  <div class="skill-tag"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
-                  <div class="skill-tag"><i class="devicon-express-original"></i><span>express.js</span></div>
-                  <div class="skill-tag"><i class="devicon-fastapi-plain colored"></i><span>FastAPI</span></div>
-                </div>
-              </div>
-          
-              <div class="skill-card">                
-                <div class="skill-name">Databases</div>
-                <div class="skill-tags">
-                  <div class="skill-tag"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
-                  <div class="skill-tag"><i class="devicon-sqlite-plain colored"></i><span>SQLite</span></div>
-                  <div class="skill-tag"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
-                  <div class="skill-tag"><i class="devicon-microsoftsqlserver-plain-wordmark colored"></i><span>SQL Server</span></div>
-                  <div class="skill-tag"><i class="devicon-firebase-plain colored"></i><span>Firestore</span></div>
-                </div>
-              </div>
+        <div data-carousel data-reveal>
+          <div data-track class="no-scrollbar relative flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth py-2">
 
-              <div class="skill-card">                
-                <div class="skill-name">Languages</div>
-                <div class="skill-tags">
-                  <div class="skill-tag"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
-                  <div class="skill-tag"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
-                  <div class="skill-tag"><i class="devicon-java-plain colored"></i><span>Java</span></div>
-                  <div class="skill-tag"><i class="devicon-python-plain colored"></i><span>Python</span></div>
-                </div>
+            <div class="skill-card skill-slide">
+              <h3 class="skill-title">Frontend</h3>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="skill-chip"><i class="devicon-react-original colored"></i><span>React</span></div>
+                <div class="skill-chip"><i class="devicon-angularjs-plain colored"></i><span>Angular</span></div>
+                <div class="skill-chip"><i class="devicon-tailwindcss-original colored"></i><span>Tailwind</span></div>
+                <div class="skill-chip"><i class="devicon-html5-plain colored"></i><span>HTML</span></div>
+                <div class="skill-chip"><i class="devicon-css3-plain colored"></i><span>CSS</span></div>
               </div>
-          
-              <div class="skill-card">
-                <div class="skill-name">Tools & Cloud</div>
-                <div class="skill-tags">
-                  <div class="skill-tag"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
-                  <div class="skill-tag"><i class="devicon-kubernetes-plain colored"></i><span>Kubernetes</span></div>
-                  <div class="skill-tag"><i class="devicon-amazonwebservices-plain-wordmark colored"></i><span>AWS S3</span></div>
-                  <div class="skill-tag"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
-                  <div class="skill-tag"><i class="devicon-git-plain colored"></i><span>Git</span></div>
-                  <div class="skill-tag"><i class="devicon-androidstudio-plain colored"></i><span>Android Studio</span></div>
-                </div>
-              </div>
-          
-              <div class="skill-card">
-                <div class="skill-name">Mobile</div>
-                <div class="skill-tags">
-                  <div class="skill-tag"><i class="devicon-android-plain colored"></i><span>Android SDK</span></div>
-                </div>
-              </div>
-          
             </div>
+
+            <div class="skill-card skill-slide">
+              <h3 class="skill-title">Backend</h3>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="skill-chip"><i class="devicon-spring-original colored"></i><span>Spring Boot</span></div>
+                <div class="skill-chip"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+                <div class="skill-chip"><i class="devicon-express-original"></i><span>express.js</span></div>
+                <div class="skill-chip"><i class="devicon-fastapi-plain colored"></i><span>FastAPI</span></div>
+              </div>
+            </div>
+
+            <div class="skill-card skill-slide">
+              <h3 class="skill-title">Databases</h3>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="skill-chip"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
+                <div class="skill-chip"><i class="devicon-sqlite-plain colored"></i><span>SQLite</span></div>
+                <div class="skill-chip"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+                <div class="skill-chip"><i class="devicon-microsoftsqlserver-plain-wordmark colored"></i><span>SQL Server</span></div>
+                <div class="skill-chip"><i class="devicon-firebase-plain colored"></i><span>Firestore</span></div>
+              </div>
+            </div>
+
+            <div class="skill-card skill-slide">
+              <h3 class="skill-title">Languages</h3>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="skill-chip"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+                <div class="skill-chip"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                <div class="skill-chip"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+                <div class="skill-chip"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+              </div>
+            </div>
+
+            <div class="skill-card skill-slide">
+              <h3 class="skill-title">Tools &amp; Cloud</h3>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="skill-chip"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+                <div class="skill-chip"><i class="devicon-kubernetes-plain colored"></i><span>Kubernetes</span></div>
+                <div class="skill-chip"><i class="devicon-amazonwebservices-plain-wordmark colored"></i><span>AWS S3</span></div>
+                <div class="skill-chip"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
+                <div class="skill-chip"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                <div class="skill-chip"><i class="devicon-androidstudio-plain colored"></i><span>Android Studio</span></div>
+              </div>
+            </div>
+
+            <div class="skill-card skill-slide">
+              <h3 class="skill-title">Mobile</h3>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="skill-chip"><i class="devicon-android-plain colored"></i><span>Android SDK</span></div>
+              </div>
+            </div>
+
           </div>
-          
-          <div class="carousel-dots" id="skillsDots"></div>
+          <div data-dots class="mt-6 flex justify-center gap-2.5"></div>
         </div>
       </div>
     </section>
 
-    
-
     <!-- Experience -->
-    <section id="experience">
-      <div class="container">
-        <div class="reveal">
-          <div class="section-eyebrow">// where I've contributed</div>
-          <h2 class="section-title">Experience</h2>
+    <section id="experience" class="px-6 py-24">
+      <div class="mx-auto max-w-6xl">
+        <div data-reveal>
+          <p class="mb-2 font-mono text-xs tracking-widest text-sage">// where I've contributed</p>
+          <h2 class="mb-12 text-3xl font-bold text-ink sm:text-4xl">Experience</h2>
+        </div>
 
-          <div class="experience-carousel">
-            <div class="experience-carousel-track" id="experienceTrack">
+        <div data-carousel data-reveal>
+          <div data-track class="no-scrollbar flex snap-x snap-mandatory overflow-x-auto scroll-smooth">
 
-              <div class="timeline-card">
-                <div class="timeline-header">
-                  <div>
-                    <div class="exp-role">Software Developer</div>
-                    <div class="exp-org">Freelance</div>
-                  </div>
-                  <div class="exp-date">Oct 2025 - Nov 2026</div>
+            <article class="exp-card">
+              <div class="mb-4 flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-lg font-semibold text-ink">Software Developer</h3>
+                  <p class="text-sm text-sage-light">Freelance</p>
                 </div>
-                <p class="exp-desc">
-                  Built a health tracking platform end to end with authentication, CSV data import, historical trend analytics, and a React and Tailwind dashboard backed by a FastAPI and MySQL API layer.
-                </p>
-                <div class="tags">
-                  <span class="tag">React</span>
-                  <span class="tag">FastAPI</span>
-                  <span class="tag">MySQL</span>
-                  <span class="tag">Tailwind</span>
-                  <span class="tag">Docker</span>
-                  <span class="tag">Kubernetes</span>
-                </div>
+                <span class="date-pill">Oct 2025 - Nov 2026</span>
               </div>
-
-              <div class="timeline-card">
-                <div class="timeline-header">
-                  <div>
-                    <div class="exp-role">Software Developer</div>
-                    <div class="exp-org">Instituto Tecnológico de Costa Rica</div>
-                  </div>
-                  <div class="exp-date">Aug 2025 - Dec 2025</div>
-                </div>
-                <p class="exp-desc">
-                  Developed an institutional platform for event management, registration, and certificate generation using Angular on the frontend and Node.js, express.js, and Cloud Firestore on the backend.
-                </p>
-                <div class="tags">
-                  <span class="tag">Angular</span>
-                  <span class="tag">Node.js</span>
-                  <span class="tag">express.js</span>
-                  <span class="tag">Firebase(Firestore)</span>
-                </div>
+              <p class="mb-5 text-sm leading-relaxed">Built a health tracking platform end to end with authentication, CSV data import, historical trend analytics, and a React and Tailwind dashboard backed by a FastAPI and MySQL API layer.</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">MySQL</span><span class="tag">Tailwind</span><span class="tag">Docker</span><span class="tag">Kubernetes</span>
               </div>
+            </article>
 
-              <div class="timeline-card">
-                <div class="timeline-header">
-                  <div>
-                    <div class="exp-role">Software Developer</div>
-                    <div class="exp-org">Freelance</div>
-                  </div>
-                  <div class="exp-date">Jun 2024 - Jul 2025</div>
+            <article class="exp-card">
+              <div class="mb-4 flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-lg font-semibold text-ink">Software Developer</h3>
+                  <p class="text-sm text-sage-light">Instituto Tecnológico de Costa Rica</p>
                 </div>
-                <p class="exp-desc">
-                  Built a full-stack microbiological lab management app with a React frontend and Java, Spring Boot, and PostgreSQL backend, handling domain calculations, validation, and Docker/Kubernetes deployments.
-                </p>
-                <div class="tags">
-                  <span class="tag">React</span>
-                  <span class="tag">Java</span>
-                  <span class="tag">Spring Boot</span>
-                  <span class="tag">PostgreSQL</span>
-                  <span class="tag">Docker</span>
-                  <span class="tag">Kubernetes</span>
-                </div>
+                <span class="date-pill">Aug 2025 - Dec 2025</span>
               </div>
+              <p class="mb-5 text-sm leading-relaxed">Developed an institutional platform for event management, registration, and certificate generation using Angular on the frontend and Node.js, express.js, and Cloud Firestore on the backend.</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="tag">Angular</span><span class="tag">Node.js</span><span class="tag">express.js</span><span class="tag">Firebase (Firestore)</span>
+              </div>
+            </article>
 
-            </div>
+            <article class="exp-card">
+              <div class="mb-4 flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h3 class="text-lg font-semibold text-ink">Software Developer</h3>
+                  <p class="text-sm text-sage-light">Freelance</p>
+                </div>
+                <span class="date-pill">Jun 2024 - Jul 2025</span>
+              </div>
+              <p class="mb-5 text-sm leading-relaxed">Built a full-stack microbiological lab management app with a React frontend and Java, Spring Boot, and PostgreSQL backend, handling domain calculations, validation, and Docker/Kubernetes deployments.</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="tag">React</span><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">Kubernetes</span>
+              </div>
+            </article>
+
           </div>
-
-          <div class="carousel-dots" id="experienceDots"></div>
+          <div data-dots class="mt-6 flex justify-center gap-2.5"></div>
         </div>
       </div>
     </section>
 
     <!-- Education -->
-    <section id="education">
-      <div class="container">
-        <div class="reveal">
-          <div class="section-eyebrow">// where I studied</div>
-          <h2 class="section-title">Education</h2>
-          <div class="timeline">
+    <section id="education" class="px-6 py-24">
+      <div class="mx-auto max-w-6xl">
+        <div data-reveal>
+          <p class="mb-2 font-mono text-xs tracking-widest text-sage">// where I studied</p>
+          <h2 class="mb-12 text-3xl font-bold text-ink sm:text-4xl">Education</h2>
+        </div>
 
-            <div class="timeline-card">
-              <div class="timeline-header">
-                <div>
-                  <div class="exp-role">Bachelor's Degree in Computer Engineering</div>
-                  <div class="exp-org">Instituto Tecnológico de Costa Rica — TEC</div>
-                </div>
-                <div class="exp-date">2026</div>
+        <article class="exp-card !flex-none" data-reveal>
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div class="flex items-start gap-4">
+              <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-sage/25 bg-sage/10 text-sage-light">
+                <i data-lucide="graduation-cap" class="h-6 w-6"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-ink">Bachelor's Degree in Computer Engineering</h3>
+                <p class="text-sm text-sage-light">Instituto Tecnológico de Costa Rica - TEC</p>
               </div>
             </div>
-
+            <span class="date-pill">2026</span>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
     <!-- Projects -->
-    <section id="projects">
-      <div class="container">
-        <div class="reveal from-left">
-          <div class="section-eyebrow">// what I've built</div>
-          <h2 class="section-title">Projects</h2>
+    <section id="projects" class="px-6 py-24">
+      <div class="mx-auto max-w-6xl">
+        <div data-reveal>
+          <p class="mb-2 font-mono text-xs tracking-widest text-sage">// what I've built</p>
+          <h2 class="mb-12 text-3xl font-bold text-ink sm:text-4xl">Projects</h2>
+        </div>
 
-          <div class="projects-carousel">
-            <div class="projects-carousel-track" id="projectsTrack">
+        <div data-carousel data-add-contact data-reveal>
+          <div data-track class="no-scrollbar flex snap-x snap-mandatory overflow-x-auto scroll-smooth">
 
-              <div class="project-card">
-                <div class="project-image">
-                  <img src="./assets/images/projects/OnStream.png" alt="OnStream project screenshot" />
-                </div>
-                <div class="project-info">
-                  <div class="project-name">OnStream</div>
-                  <p class="project-desc">Multimedia streaming system with real-time WebSocket communication and AWS S3 cloud media integration.</p>
-                  <div class="tags">
-                    <span class="tag">Node.js</span>
-                    <span class="tag">express.js</span>
-                    <span class="tag">WebSockets</span>
-                    <span class="tag">AWS S3</span>
-                  </div>
-                  <a href="https://github.com/JossephVR/Multimedia-streaming-system" target="_blank" class="project-link-btn">view repository </a>
-                </div>
+            <article class="project-card">
+              <div class="group relative h-56 overflow-hidden bg-sage/5 md:h-full md:basis-[70%]">
+                <img src="./assets/images/projects/OnStream.png" alt="OnStream project screenshot" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent"></div>
               </div>
-
-              <div class="project-card">
-                <div class="project-image">
-                  <img src="./assets/images/projects/PureHarvest.png" alt="PureHarvest project screenshot" />
-                </div>
-                <div class="project-info">
-                  <div class="project-name">PureHarvest</div>
-                  <p class="project-desc">Native Android marketplace for coffee and organic producers, with Firebase integration, bilingual UI, and map navigation.</p>
-                  <div class="tags">
-                    <span class="tag">Android SDK</span>
-                    <span class="tag">Java</span>
-                    <span class="tag">Firebase (Firestore, Storage)</span>
-                  </div>
-                  <span class="project-link-note"> Private repository - code not publicly available</span>
-                </div>
+              <div class="flex flex-1 flex-col gap-3.5 overflow-y-auto p-6 md:basis-[30%]">
+                <h3 class="text-lg font-semibold text-ink">OnStream</h3>
+                <p class="text-[13px] leading-relaxed">Multimedia streaming system with real-time WebSocket communication and AWS S3 cloud media integration.</p>
+                <div class="flex flex-wrap gap-1.5"><span class="tag">Node.js</span><span class="tag">express.js</span><span class="tag">WebSockets</span><span class="tag">AWS S3</span></div>
+                <a href="https://github.com/JossephVR/Multimedia-streaming-system" target="_blank" rel="noopener" class="repo-btn"><i class="devicon-github-original text-base"></i> View repository</a>
               </div>
+            </article>
 
-              <div class="project-card">
-                <div class="project-image">
-                  <img src="./assets/images/projects/Fullstack-user-manager.png" alt="fullstack-user-manager project screenshot" />
-                </div>
-                <div class="project-info">
-                  <div class="project-name">Fullstack-user-manager</div>
-                  <p class="project-desc">Full-stack CRUD app containerized with Docker Compose — React frontend served by Nginx, express.js backend, and PostgreSQL database.</p>
-                  <div class="tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">PostgreSQL</span>
-                    <span class="tag">Nginx</span>
-                  </div>
-                  <a href="https://github.com/JossephVR/fullstack-user-manager" target="_blank" class="project-link-btn">view repository </a>
-                </div>
+            <article class="project-card">
+              <div class="group relative h-56 overflow-hidden bg-sage/5 md:h-full md:basis-[70%]">
+                <img src="./assets/images/projects/PureHarvest.png" alt="PureHarvest project screenshot" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent"></div>
               </div>
-
-              <div class="project-card">
-                <div class="project-image">
-                  <img src="./assets/images/projects/Distributed-Chat-System.png" alt="Distributed Chat System project screenshot" />
-                </div>
-                <div class="project-info">
-                  <div class="project-name">Distributed Chat System</div>
-                  <p class="project-desc">Real-time distributed chat with text and multimedia support, WebSocket communication, data encryption, session management, and an admin panel for live usage statistics.</p>
-                  <div class="tags">
-                    <span class="tag">Node.js</span>
-                    <span class="tag">express.js</span>
-                    <span class="tag">WebSockets</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">Flask</span>
-                  </div>
-                  <a href="https://github.com/JossephVR/Distributed-Chat-System" target="_blank" class="project-link-btn">view repository </a>
-                </div>
+              <div class="flex flex-1 flex-col gap-3.5 overflow-y-auto p-6 md:basis-[30%]">
+                <h3 class="text-lg font-semibold text-ink">PureHarvest</h3>
+                <p class="text-[13px] leading-relaxed">Native Android marketplace for coffee and organic producers, with Firebase integration, bilingual UI, and map navigation.</p>
+                <div class="flex flex-wrap gap-1.5"><span class="tag">Android SDK</span><span class="tag">Java</span><span class="tag">Firebase (Firestore, Storage)</span></div>
+                <span class="mt-auto inline-flex items-center gap-2 font-mono text-[11px] leading-relaxed"><i data-lucide="lock" class="h-3.5 w-3.5 shrink-0"></i> Private repository - code not publicly available</span>
               </div>
+            </article>
 
-            </div>
+            <article class="project-card">
+              <div class="group relative h-56 overflow-hidden bg-sage/5 md:h-full md:basis-[70%]">
+                <img src="./assets/images/projects/Fullstack-user-manager.png" alt="fullstack-user-manager project screenshot" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent"></div>
+              </div>
+              <div class="flex flex-1 flex-col gap-3.5 overflow-y-auto p-6 md:basis-[30%]">
+                <h3 class="text-lg font-semibold text-ink">Fullstack-user-manager</h3>
+                <p class="text-[13px] leading-relaxed">Full-stack CRUD app containerized with Docker Compose, React frontend served by Nginx, express.js backend, and PostgreSQL database.</p>
+                <div class="flex flex-wrap gap-1.5"><span class="tag">React</span><span class="tag">Docker</span><span class="tag">PostgreSQL</span><span class="tag">Nginx</span></div>
+                <a href="https://github.com/JossephVR/fullstack-user-manager" target="_blank" rel="noopener" class="repo-btn"><i class="devicon-github-original text-base"></i> View repository</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="group relative h-56 overflow-hidden bg-sage/5 md:h-full md:basis-[70%]">
+                <img src="./assets/images/projects/Distributed-Chat-System.png" alt="Distributed Chat System project screenshot" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent"></div>
+              </div>
+              <div class="flex flex-1 flex-col gap-3.5 overflow-y-auto p-6 md:basis-[30%]">
+                <h3 class="text-lg font-semibold text-ink">Distributed Chat System</h3>
+                <p class="text-[13px] leading-relaxed">Real-time distributed chat with text and multimedia support, WebSocket communication, data encryption, session management, and an admin panel for live usage statistics.</p>
+                <div class="flex flex-wrap gap-1.5"><span class="tag">Node.js</span><span class="tag">express.js</span><span class="tag">WebSockets</span><span class="tag">Python</span><span class="tag">Flask</span></div>
+                <a href="https://github.com/JossephVR/Distributed-Chat-System" target="_blank" rel="noopener" class="repo-btn"><i class="devicon-github-original text-base"></i> View repository</a>
+              </div>
+            </article>
+
           </div>
-
-          <div class="carousel-dots" id="projectsDots"></div>
+          <div data-dots class="mt-6 flex justify-center gap-2.5"></div>
         </div>
       </div>
     </section>
-
-    
 
     <!-- Contact -->
-    <section id="contact">
-      <div class="container">
-        <div class="reveal">
-          <div class="section-eyebrow">// get in touch</div>
-          <h2 class="section-title">Contact</h2>
-          <div class="contact-wrap">
-            <div class="contact-box">
-              <div class="contact-grid">
+    <section id="contact" class="px-6 py-24">
+      <div class="mx-auto max-w-6xl">
+        <div data-reveal>
+          <p class="mb-2 font-mono text-xs tracking-widest text-sage">// get in touch</p>
+          <h2 class="mb-12 text-3xl font-bold text-ink sm:text-4xl">Contact</h2>
+        </div>
 
-                <a href="mailto:jossephvr@gmail.com" class="contact-card">
-                  <div class="contact-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="2" y="4" width="20" height="16" rx="2"/>
-                      <path d="M2 7l10 7 10-7"/>
-                    </svg>
-                  </div>
-                  <div class="contact-card-text">
-                    <div class="contact-card-label">Email</div>
-                    <div class="contact-card-value">jossephvr@gmail.com</div>
-                  </div>
-                </a>
+        <div class="relative overflow-hidden rounded-3xl border border-line bg-card/80 p-6 sm:p-10" data-reveal>
+          <div class="pointer-events-none absolute -top-24 right-0 h-64 w-64 rounded-full bg-sage/10 blur-3xl"></div>
+          <div class="relative grid gap-4 sm:grid-cols-2">
 
-                <a href="https://www.linkedin.com/in/josseph-valverde-490b16353/" target="_blank" class="contact-card">
-                  <div class="contact-icon">
-                    <i class="devicon-linkedin-plain"></i>
-                  </div>
-                  <div class="contact-card-text">
-                    <div class="contact-card-label">LinkedIn</div>
-                    <div class="contact-card-value">Josseph Valverde</div>
-                  </div>
-                </a>
+            <a href="mailto:jossephvr@gmail.com" class="contact-card group">
+              <span class="contact-icon"><i data-lucide="mail" class="h-5 w-5"></i></span>
+              <span class="min-w-0"><span class="contact-label">Email</span><span class="contact-value">jossephvr@gmail.com</span></span>
+            </a>
 
-                <a href="https://github.com/JossephVR" target="_blank" class="contact-card">
-                  <div class="contact-icon">
-                    <i class="devicon-github-original"></i>
-                  </div>
-                  <div class="contact-card-text">
-                    <div class="contact-card-label">GitHub</div>
-                    <div class="contact-card-value">JossephVR</div>
-                  </div>
-                </a>
+            <a href="https://www.linkedin.com/in/josseph-valverde-490b16353/" target="_blank" rel="noopener" class="contact-card group">
+              <span class="contact-icon"><i class="devicon-linkedin-plain text-xl"></i></span>
+              <span class="min-w-0"><span class="contact-label">LinkedIn</span><span class="contact-value">Josseph Valverde</span></span>
+            </a>
 
-                <a href="tel:+50683970226" class="contact-card">
-                  <div class="contact-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 .18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                    </svg>
-                  </div>
-                  <div class="contact-card-text">
-                    <div class="contact-card-label">Phone</div>
-                    <div class="contact-card-value">+506 8397 0226</div>
-                  </div>
-                </a>
+            <a href="https://github.com/JossephVR" target="_blank" rel="noopener" class="contact-card group">
+              <span class="contact-icon"><i class="devicon-github-original text-xl"></i></span>
+              <span class="min-w-0"><span class="contact-label">GitHub</span><span class="contact-value">JossephVR</span></span>
+            </a>
 
-              </div>
-            </div>
+            <a href="tel:+50683970226" class="contact-card group">
+              <span class="contact-icon"><i data-lucide="phone" class="h-5 w-5"></i></span>
+              <span class="min-w-0"><span class="contact-label">Phone</span><span class="contact-value">+506 8397 0226</span></span>
+            </a>
+
           </div>
         </div>
       </div>
     </section>
 
-    <footer>
-      <div class="container">
-        built by josseph valverde · 2026
-      </div>
+    <footer class="border-t border-line py-8 text-center font-mono text-xs">
+      built by josseph valverde · 2026
     </footer>
 
   </main>
 
   <script src="./script.js"></script>
-
 </body>
 </html>
