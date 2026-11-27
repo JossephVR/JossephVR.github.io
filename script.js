@@ -1,211 +1,133 @@
-const sections = document.querySelectorAll('section[id]')
-const navLinks = document.querySelectorAll('.nav-links a')
+// Icons (Lucide)
+window.addEventListener('load', () => lucide.createIcons())
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(link => link.classList.remove('active'))
-      const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`)
-      if (active) active.classList.add('active')
-    }
-  })
-}, {
-  threshold: 0.3
-})
-
-sections.forEach(section => observer.observe(section))
-
-const revealElements = document.querySelectorAll('.reveal')
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible')
-    } else {
-      entry.target.classList.remove('visible')
-    }
-  })
-}, {
-  threshold: 0.15
-})
-
-revealElements.forEach(el => revealObserver.observe(el))
-
+// Mobile menu
 const hamburger = document.getElementById('hamburger')
-const navLinksMenu = document.getElementById('nav-links')
+const mobileLinks = document.getElementById('mobile-links')
+let menuOpen = false
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open')
-  navLinksMenu.classList.toggle('open')
-})
+function setMenu(open) {
+  menuOpen = open
+  mobileLinks.style.maxHeight = open ? mobileLinks.scrollHeight + 16 + 'px' : '0px'
+  mobileLinks.classList.toggle('mt-3', open)
+  const bars = hamburger.querySelectorAll('span')
+  bars[0].style.transform = open ? 'translateY(8px) rotate(45deg)' : ''
+  bars[1].style.opacity = open ? '0' : '1'
+  bars[2].style.transform = open ? 'translateY(-8px) rotate(-45deg)' : ''
+}
+hamburger.addEventListener('click', () => setMenu(!menuOpen))
+mobileLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)))
 
-// Close menu when a link is clicked
-navLinksMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open')
-    navLinksMenu.classList.remove('open')
+// Scroll-spy (highlights the current section in the nav)
+const navAnchors = document.querySelectorAll('#desktop-links a, #mobile-links a')
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return
+    navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${entry.target.id}`))
   })
+}, { rootMargin: '-40% 0px -55% 0px' })
+document.querySelectorAll('section[id]').forEach(s => spy.observe(s))
+
+// Scroll reveal (runs once per element)
+document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+  el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out')
+  el.style.transitionDelay = `${(i % 3) * 90}ms`
 })
+const reveal = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return
+    const el = entry.target
+    el.classList.remove('opacity-0', 'translate-y-8')
+    reveal.unobserve(el)
+    // After the reveal finishes, hand transitions back to the component's own hover styles
+    setTimeout(() => {
+      el.classList.remove('transition-all', 'duration-700', 'ease-out')
+      el.style.transitionDelay = ''
+    }, 900)
+  })
+}, { threshold: 0.12 })
+document.querySelectorAll('[data-reveal]').forEach(el => reveal.observe(el))
 
-// Skills carousel
-const skillsTrack = document.getElementById('skillsTrack')
-const skillsDots = document.getElementById('skillsDots')
-const skillCards = skillsTrack.querySelectorAll('.skill-card')
+// Typing effect
+const roles = ['Software Developer', 'Full-Stack Engineer', 'REST API Builder', 'Cloud Enthusiast']
+const typed = document.getElementById('typed')
+let roleIdx = 0, charIdx = 0, deleting = false
 
-function getCardsPerView() {
-  if (window.matchMedia('(max-width: 768px)').matches) return 1
-  if (window.matchMedia('(max-width: 1024px)').matches) return 2
-  return 3
+function type() {
+  const word = roles[roleIdx]
+  typed.textContent = word.slice(0, charIdx)
+  if (!deleting && charIdx < word.length) { charIdx++; return setTimeout(type, 70) }
+  if (!deleting) { deleting = true; return setTimeout(type, 1600) }
+  if (charIdx > 0) { charIdx--; return setTimeout(type, 35) }
+  deleting = false
+  roleIdx = (roleIdx + 1) % roles.length
+  setTimeout(type, 300)
 }
-function getTotalPages() {
-  return Math.ceil(skillCards.length / getCardsPerView())
-}
+type()
 
-function buildDots() {
-  skillsDots.innerHTML = ''
-  const totalPages = getTotalPages()
-  for (let i = 0; i < totalPages; i++) {
-    const dot = document.createElement('button')
-    dot.classList.add('carousel-dot')
-    dot.textContent = i + 1
-    dot.setAttribute('aria-label', `Go to skills page ${i + 1}`)
-    dot.addEventListener('click', () => goToPage(i))
-    skillsDots.appendChild(dot)
+// Tech marquee (content duplicated for a seamless loop)
+const techs = ['React', 'Angular', 'TypeScript', 'Tailwind', 'Node.js', 'Express', 'FastAPI', 'Spring Boot',
+               'PostgreSQL', 'Firestore', 'Docker', 'Kubernetes', 'AWS S3', 'Java', 'Python', 'Git']
+const marquee = document.getElementById('marquee')
+marquee.innerHTML = [...techs, ...techs]
+  .map(t => `<span class="flex items-center gap-12">${t}<span class="text-sage">/</span></span>`)
+  .join('')
+
+// Carousels (skills, experience and projects share this code)
+document.querySelectorAll('[data-carousel]').forEach(carousel => {
+  const track = carousel.querySelector('[data-track]')
+  const dots = carousel.querySelector('[data-dots]')
+  const slides = [...track.children]
+  const withAdd = carousel.hasAttribute('data-add-contact')
+
+  track.classList.add('relative') // makes slide.offsetLeft relative to the track
+
+  const perView = () => Math.max(1, Math.round(track.clientWidth / slides[0].offsetWidth))
+  const pageCount = () => Math.ceil(slides.length / perView())
+  const step = () => slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth
+
+  const currentPage = () => {
+    const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2
+    if (atEnd) return pageCount() - 1
+    return Math.min(pageCount() - 1, Math.floor(Math.round(track.scrollLeft / step()) / perView()))
   }
-  updateActiveDot()
-}
 
-function getCurrentPage() {
-  const pageWidth = skillsTrack.clientWidth
-  return Math.round(skillsTrack.scrollLeft / pageWidth)
-}
+  const goTo = page => {
+    const target = slides[Math.min(page * perView(), slides.length - 1)]
+    track.scrollTo({ left: target.offsetLeft, behavior: 'smooth' })
+  }
 
-function updateActiveDot() {
-  const dots = skillsDots.querySelectorAll('.carousel-dot')
-  const currentPage = getCurrentPage()
-  dots.forEach((dot, i) => dot.classList.toggle('active', i === currentPage))
-}
+  const update = () => {
+    const c = currentPage()
+    dots.querySelectorAll('.carousel-dot:not(.carousel-dot-add)')
+      .forEach((d, i) => d.classList.toggle('active', i === c))
+  }
 
-function goToPage(pageIndex) {
-  const pageWidth = skillsTrack.clientWidth
-  skillsTrack.scrollTo({ left: pageWidth * pageIndex, behavior: 'smooth' })
-}
-
-let scrollTimeout
-skillsTrack.addEventListener('scroll', () => {
-  clearTimeout(scrollTimeout)
-  scrollTimeout = setTimeout(updateActiveDot, 80)
-})
-
-let resizeTimeout
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimeout)
-  resizeTimeout = setTimeout(buildDots, 150)
-})
-
-buildDots()
-
-// Projects carousel
-const projectsTrack = document.getElementById('projectsTrack')
-const projectsDots = document.getElementById('projectsDots')
-const projectCards = projectsTrack.querySelectorAll('.project-card')
-
-function buildProjectDots() {
-  projectsDots.innerHTML = ''
-  projectCards.forEach((_, i) => {
-    const dot = document.createElement('button')
-    dot.classList.add('carousel-dot')
-    dot.textContent = i + 1
-    dot.setAttribute('aria-label', `Go to project ${i + 1}`)
-    dot.addEventListener('click', () => goToProjectPage(i))
-    projectsDots.appendChild(dot)
-  })
-
-  const addBtn = document.createElement('button')
-  addBtn.classList.add('carousel-dot', 'carousel-dot-add')
-  addBtn.textContent = '+'
-  addBtn.title = 'Want to add another project? Contact me!'
-  addBtn.setAttribute('aria-label', 'Want to add another project? Go to contact section')
-  addBtn.addEventListener('click', () => {
-    const contactSection = document.getElementById('contact')
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' })
+  const build = () => {
+    dots.innerHTML = ''
+    for (let i = 0; i < pageCount(); i++) {
+      const b = document.createElement('button')
+      b.className = 'carousel-dot'
+      b.textContent = i + 1
+      b.setAttribute('aria-label', `Go to page ${i + 1}`)
+      b.addEventListener('click', () => goTo(i))
+      dots.appendChild(b)
     }
-  })
-  projectsDots.appendChild(addBtn)
 
-  updateActiveProjectDot()
-}
+    if (withAdd) {
+      const add = document.createElement('button')
+      add.className = 'carousel-dot carousel-dot-add'
+      add.textContent = '+'
+      add.title = 'Want to add another project? Contact me!'
+      add.setAttribute('aria-label', 'Want to add another project? Go to contact section')
+      add.addEventListener('click', () => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }))
+      dots.appendChild(add)
+    }
+    update()
+  }
 
-function getCurrentProjectPage() {
-  const pageWidth = projectsTrack.clientWidth
-  return Math.round(projectsTrack.scrollLeft / pageWidth)
-}
-
-function updateActiveProjectDot() {
-  const dots = projectsDots.querySelectorAll('.carousel-dot')
-  const currentPage = getCurrentProjectPage()
-  dots.forEach((dot, i) => dot.classList.toggle('active', i === currentPage))
-}
-
-function goToProjectPage(pageIndex) {
-  const pageWidth = projectsTrack.clientWidth
-  projectsTrack.scrollTo({ left: pageWidth * pageIndex, behavior: 'smooth' })
-}
-
-let projectScrollTimeout
-projectsTrack.addEventListener('scroll', () => {
-  clearTimeout(projectScrollTimeout)
-  projectScrollTimeout = setTimeout(updateActiveProjectDot, 80)
+  let scrollTimer, resizeTimer
+  track.addEventListener('scroll', () => { clearTimeout(scrollTimer); scrollTimer = setTimeout(update, 80) })
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(build, 150) })
+  build()
 })
-
-let projectResizeTimeout
-window.addEventListener('resize', () => {
-  clearTimeout(projectResizeTimeout)
-  projectResizeTimeout = setTimeout(buildProjectDots, 150)
-})
-
-buildProjectDots()
-
-// Experience carousel
-const experienceTrack = document.getElementById('experienceTrack')
-const experienceDots = document.getElementById('experienceDots')
-const experienceCards = experienceTrack.querySelectorAll('.timeline-card')
-
-function buildExperienceDots() {
-  experienceDots.innerHTML = ''
-  experienceCards.forEach((_, i) => {
-    const dot = document.createElement('button')
-    dot.classList.add('carousel-dot')
-    dot.textContent = i + 1
-    dot.setAttribute('aria-label', `Go to experience ${i + 1}`)
-    dot.addEventListener('click', () => goToExperiencePage(i))
-    experienceDots.appendChild(dot)
-  })
-  updateActiveExperienceDot()
-}
-
-function getCurrentExperiencePage() {
-  return Math.round(experienceTrack.scrollLeft / experienceTrack.clientWidth)
-}
-
-function updateActiveExperienceDot() {
-  const dots = experienceDots.querySelectorAll('.carousel-dot')
-  const currentPage = getCurrentExperiencePage()
-  dots.forEach((dot, i) => dot.classList.toggle('active', i === currentPage))
-}
-
-function goToExperiencePage(pageIndex) {
-  experienceTrack.scrollTo({
-    left: experienceTrack.clientWidth * pageIndex,
-    behavior: 'smooth'
-  })
-}
-
-let experienceScrollTimeout
-experienceTrack.addEventListener('scroll', () => {
-  clearTimeout(experienceScrollTimeout)
-  experienceScrollTimeout = setTimeout(updateActiveExperienceDot, 80)
-})
-
-buildExperienceDots()

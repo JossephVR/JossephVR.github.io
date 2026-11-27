@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .nav-link { @apply rounded-lg px-3 py-1.5 text-xs font-medium text-muted transition duration-200 hover:bg-sage/10 hover:text-ink; }
+  .nav-link.active { @apply bg-sage/15 text-ink; }
+
+  .skill-card { @apply rounded-2xl border border-line bg-card/80 p-7 transition duration-300 hover:-translate-y-1 hover:border-sage/50 hover:shadow-xl hover:shadow-black/30; }
+  .skill-title { @apply mb-5 text-lg font-semibold text-ink; }
+  .skill-chip { @apply flex min-h-[84px] flex-col items-center justify-center gap-2 rounded-xl bg-sage/10 p-2 text-center font-mono text-[11px] text-ink transition duration-200 hover:-translate-y-0.5 hover:bg-sage/20; }
+  .skill-chip i { @apply text-3xl; }
+
+  .exp-card { @apply flex-[0_0_100%] snap-start rounded-2xl border border-line border-l-[3px] border-l-sage bg-card/80 p-6 transition duration-300 hover:bg-[#161b24] sm:p-8; }
+  .date-pill { @apply whitespace-nowrap rounded-full border border-sage/25 bg-sage/10 px-3 py-1 font-mono text-[11px] text-muted; }
+  .tag { @apply rounded bg-sage/10 px-2.5 py-1 font-mono text-[11px] text-sage-light; }
+
+  .project-card { @apply flex flex-[0_0_100%] snap-start flex-col overflow-hidden rounded-2xl border border-line bg-card/80 transition duration-300 hover:border-sage/50 md:h-[clamp(400px,62vh,520px)] md:flex-row; }
+  .repo-btn { @apply mt-auto inline-flex items-center gap-2 self-start rounded-lg border border-line px-4 py-2 font-mono text-xs text-ink transition duration-200 hover:border-sage hover:text-sage-light; }
+
+  .contact-card { @apply flex items-center gap-4 rounded-2xl border border-line bg-white/[0.02] p-4 transition duration-300 hover:-translate-y-0.5 hover:border-sage/50 hover:bg-sage/5 hover:shadow-lg hover:shadow-black/20; }
+  .contact-icon { @apply grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-sage/25 bg-sage/10 text-sage-light transition duration-300 group-hover:bg-sage/20; }
+  .contact-label { @apply block font-mono text-[10px] uppercase tracking-wider text-muted; }
+  .contact-value { @apply block truncate text-sm font-medium text-ink; }
+
+  .carousel-dot { @apply grid h-8 w-8 place-items-center rounded-full border border-line bg-card font-mono text-xs text-muted transition duration-200 hover:border-sage hover:text-sage-light; }
+  .carousel-dot.active { @apply scale-110 border-sage bg-sage text-white; }
+  .carousel-dot-add { @apply border-dashed border-sage/50 text-sage-light; }
+}
+
+/* Plain CSS helpers */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+.grain::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+}
+
+/* Skills carousel slide widths: 3 desktop, 2 tablet, 1 mobile (gap-5 = 1.25rem) */
+.skill-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+  
+  @media (min-width: 768px) {
+    .skill-slide { flex-basis: calc((100% - 1.25rem) / 2); }
+  }
+  
+  @media (min-width: 1024px) {
+    .skill-slide { flex-basis: calc((100% - 2.5rem) / 3); }
+  }
